@@ -27,7 +27,6 @@ const handleSearchAddress = (e) => {
   const validInput = validateInput(senderAddress);
 
   if (!validInput) {
-    console.log('Felaktig inmatning');
     displayBalance('No address');
   } else {
     getCurrentBalance(validInput);
@@ -64,10 +63,9 @@ const displayBalance = (balance) => {
 
 const handleSendEth = async (e) => {
   e.preventDefault();
-  console.log('senderAddress:', senderAddress);
+
   const recieverAddress = recieverAddressInput.value;
   const valueEth = sendValue.value;
-  console.log('recieverAddress: ', recieverAddress);
 
   const signer = await provider.getSigner(senderAddress);
 
@@ -77,15 +75,14 @@ const handleSendEth = async (e) => {
   });
 
   const receipt = await trx.wait();
-  console.log(receipt);
+
   await displayReceipt(receipt);
 };
 
 const displayReceipt = async (receipt) => {
   let block = await provider.getBlock(receipt.blockNumber);
-  console.log(block);
+
   const trx = await block.getTransaction(receipt.hash);
-  console.log(trx);
 
   receiptContainer.innerHTML = `
   <h3>Transaction completed</h3>

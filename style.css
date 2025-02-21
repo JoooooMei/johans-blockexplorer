@@ -82,7 +82,7 @@ nav * {
   border: 2px solid #e9ecef;
   border-radius: 20px;
   box-shadow: 0 0.5rem 1.2rem rgb(189 197 209 / 20%);
-  margin-block: 50px;
+  margin-block: 20px;
 }
 
 #allBlocks li {
