@@ -28,7 +28,7 @@ const handleSearchAddress = (e) => {
 
   if (!validInput) {
     console.log('Felaktig inmatning');
-    displayBalance('Felaktig inmating');
+    displayBalance('No address');
   } else {
     getCurrentBalance(validInput);
   }
@@ -51,13 +51,15 @@ const getCurrentBalance = async (address) => {
 
     recieverAddressForm.style.display = 'flex';
   } catch (error) {
-    const errorMessage = `"${address}" är inte en giltig adress`;
+    const errorMessage = `"${address}" is not a valid address`;
     displayBalance(errorMessage);
   }
 };
 
 const displayBalance = (balance) => {
-  currentBalance.innerHTML = balance;
+  currentBalance.innerHTML = `
+  Current Balance<br> 
+  <h3><i class="fa-brands fa-ethereum"></i> ${balance}</h3> `;
 };
 
 const handleSendEth = async (e) => {
